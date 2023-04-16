@@ -19,11 +19,11 @@ public class EncryptionExample {
         byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedMessage));
         return new String(decryptedBytes, "UTF-8");
     }
-    public static String rotXEncrypt(String message) {
+    public static String rotXEncrypt(String message, int rotX) {
         StringBuilder result = new StringBuilder();
         for (char c : message.toCharArray()) {
             if (ROTX_ALPHABET.indexOf(c) >= 0) {
-                int index = (ROTX_ALPHABET.indexOf(c) + 15) % ROTX_ALPHABET.length();
+                int index = (ROTX_ALPHABET.indexOf(c) + rotX) % ROTX_ALPHABET.length();
                 result.append(ROTX_ALPHABET.charAt(index));
             } else {
                 result.append(c);
@@ -35,7 +35,7 @@ public class EncryptionExample {
         StringBuilder result = new StringBuilder();
         for (char c : encryptedMessage.toCharArray()) {
             if (ROTX_ALPHABET.indexOf(c) >= 0) {
-                int index = (ROTX_ALPHABET.indexOf(c) - 15 + ROTX_ALPHABET.length()) % ROTX_ALPHABET.length();
+                int index = (ROTX_ALPHABET.indexOf(c) - rotX + ROTX_ALPHABET.length()) % ROTX_ALPHABET.length();
                 result.append(ROTX_ALPHABET.charAt(index));
             } else {
                 result.append(c);
@@ -60,9 +60,11 @@ public class EncryptionExample {
         }
 
 
-        // Enkriptimi simetrik
+        
         String encryptedMessage = encrypt(message, secretKey);
         System.out.println("Mesazhi i enkriptuar: " + encryptedMessage);
+        
+        // loop-a me posht i ofron perdorusit te zgjedh nese deshiron ta shoh ne ekran mesazhin e dekriptuar
         // ne qofte se perdoruesi pergjigjet me po, atehere mesazhi i enkriptuar, dekriptohet pastaj shfaqet
         while (true) {
             System.out.print("A deshiron qe te shfaqet mesazhi i dekriptuar? (P/J): ");
@@ -82,9 +84,11 @@ public class EncryptionExample {
         //cakton sa do te jete rotacioni
         System.out.print("Vendose sa deshironi te jete rotacioni X=");
         int rotX = Integer.parseInt(scanner.nextLine());
+        
         //Enkriptimi rotX
         String encryptedMessageRotX = rotXEncrypt(message);
         System.out.println("Mesazhi enkriptuar me ROT" + rotX + ": " + encryptedMessageRotX);
+        //Dekriptimi rotX
         String decryptedMessageRotX = rotXDecrypt(encryptedMessageRotX);
         System.out.println("Mesazhi dekriptuar me ROT" + rotX + ": " + decryptedMessageRotX);
         scanner.close();

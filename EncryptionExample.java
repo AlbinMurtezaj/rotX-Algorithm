@@ -16,3 +16,4 @@ public class EncryptionExample {
         return Base64.getEncoder().encodeToString(encryptedBytes);
     }
 }
+

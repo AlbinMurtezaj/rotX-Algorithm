@@ -86,7 +86,7 @@ public class EncryptionExample {
         String encryptedMessageRotX = rotXEncrypt(message);
         System.out.println("Mesazhi enkriptuar me ROT" + rotX + ": " + encryptedMessageRotX);
         String decryptedMessageRotX = rotXDecrypt(encryptedMessageRotX);
-        System.out.println("Mesazhi denkriptuar me ROT" + rotX + ": " + decryptedMessageRotX);
+        System.out.println("Mesazhi dekriptuar me ROT" + rotX + ": " + decryptedMessageRotX);
         scanner.close();
     }
 }

@@ -15,6 +15,34 @@ public class EncryptionExample {
         byte[] encryptedBytes = cipher.doFinal(message.getBytes("UTF-8"));
         return Base64.getEncoder().encodeToString(encryptedBytes);
     }
+     public static String rot15Encrypt(String message) {
+        StringBuilder result = new StringBuilder();
+        for (char c : message.toCharArray()) {
+            if (ROT15_ALPHABET.indexOf(c) >= 0) {
+                int index = (ROT15_ALPHABET.indexOf(c) + 15) % ROT15_ALPHABET.length();
+                result.append(ROT15_ALPHABET.charAt(index));
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+
+    public static String rot15Decrypt(String encryptedMessage) {
+        StringBuilder result = new StringBuilder();
+        for (char c : encryptedMessage.toCharArray()) {
+            if (ROT15_ALPHABET.indexOf(c) >= 0) {
+                int index = (ROT15_ALPHABET.indexOf(c) - 15 + ROT15_ALPHABET.length()) % ROT15_ALPHABET.length();
+                result.append(ROT15_ALPHABET.charAt(index));
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+    
+    
+    
      public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Vendose tekstin: ");

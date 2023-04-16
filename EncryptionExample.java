@@ -26,14 +26,10 @@ public class EncryptionExample {
         String encryptedMessage = encrypt(message, secretKey);
         System.out.println("Mesazhi i enkriptuar: " + encryptedMessage);
 
-        // i ofron perdorusit te zgjedh nese deshiron ta shoh ne ekran mesazhin e dekriptuar
-        System.out.print("A deshiron qe te shfaqet mesazhi i dekriptuar: (P/J): ");
-        String choice = scanner.nextLine();
-
         // ne qofte se perdoruesi pergjigjet me po, athere mesazhi i enkriptuar, dekriptohet dhe shfaqet
         while (true) {
             System.out.print("A deshiron qe te shfaqet mesazhi i dekriptuar: (P/J): ");
-            choice = scanner.nextLine();
+            String choice = scanner.nextLine();
 
             // kontrollon neser perdoruese e shtyp "P" ose "J"
             if (choice.equalsIgnoreCase("P")) {

@@ -70,12 +70,17 @@ public class EncryptionExample {
                 System.out.println("Opsioni i zgjedhur nuk eshte valid. Ju lutem provoni perseri me P ose J.");
             }
         }
-        //Enkriptimi rot15
-        String encryptedMessageRot15 = rot15Encrypt(message);
-        System.out.println("Mesazhi enkriptuar me ROT15: " + encryptedMessageRot15);
+         
+        //cakton sa do te jete rotacioni 
+        System.out.print("Vendose sa deshironi te jete rotacioni X=");
+        int rotX = Integer.parseInt(scanner.nextLine());
+        //Enkriptimi rotX
+        String encryptedMessageRotX = rotXEncrypt(message);
+        System.out.println("Mesazhi enkriptuar me ROT" + rotX + ": " + encryptedMessageRotX);
 
-        String decryptedMessageRot15 = rot15Decrypt(encryptedMessageRot15);
-        System.out.println("Mesazhi denkriptuar me ROT15: " + decryptedMessageRot15);
+        String decryptedMessageRotX = rotXDecrypt(encryptedMessageRotX);
+        System.out.println("Mesazhi denkriptuar me ROT" + rotX + ": " + decryptedMessageRotX);
+
 
         scanner.close();
     }

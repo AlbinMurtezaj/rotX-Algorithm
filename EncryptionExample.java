@@ -47,9 +47,17 @@ public class EncryptionExample {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Vendose tekstin: ");
         String message = scanner.nextLine();
-        System.out.print("Vendose çelsin: ");
-        String secretKey = scanner.nextLine();
-
+        String secretKey;
+        while(true) {
+        	System.out.print("Vendos gjatësin e çelsit(16, 24 ose 32 bajt :");
+        	secretKey=(scanner.nextLine());
+        	if(secretKey.length()== 16 || secretKey.length() == 24 || secretKey.length() == 32) {
+        		break;
+        	}
+        	System.out.println("Gjatesia e çelsit nuk eshte e sakt. Ju lutem provoni perseri!");
+        }
+        
+        
         // Enkriptimi simetrik
         String encryptedMessage = encrypt(message, secretKey);
         System.out.println("Mesazhi i enkriptuar: " + encryptedMessage);

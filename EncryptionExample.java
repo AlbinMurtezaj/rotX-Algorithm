@@ -51,7 +51,7 @@ public class EncryptionExample {
         String message = scanner.nextLine();
         String secretKey;
         while(true) {
-            System.out.print("Vendos gjatësine e çelesit(16, 24 ose 32 bajt :");
+            System.out.print("Vendose gjatësine e çelesit(16, 24 ose 32 bajt :");
             secretKey=(scanner.nextLine());
             if(secretKey.length()== 16 || secretKey.length() == 24 || secretKey.length() == 32) {
                 break;
